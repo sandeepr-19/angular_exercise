@@ -1,0 +1,34 @@
+<section id="container">
+  <!-- flex-box container -->
+  <form
+    [formGroup]="loginForm"
+    id="loginCard"
+    action="submit.html"
+    method="get"
+  >
+    <!-- login card form -->
+    <p>login</p>
+    <!-- user email -->
+    <input
+      type="email"
+      id="email"
+      placeholder="enter your email"
+      formControlName="email"
+    />
+    <small *ngIf="this.loginForm.get('email').invalid"
+      >username is required</small
+    >
+    <!-- user password -->
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      placeholder="enter your password"
+    />
+    <small *ngIf="this.loginForm.get('password').invalid"
+      >password is required</small
+    >
+    <input type="submit" value="login" id="submit" />
+  </form>
+  <h2>{{ loginForm.value | json }}</h2>
+</section>

@@ -1,0 +1,27 @@
+#container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#loginCard{
+    max-width: 25vw;
+    border:1px solid black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+#loginCard input{
+    margin: 5px;
+    max-width: 20vw;
+    border-radius: 5px;
+}
+a{
+    font-size: 2vw;
+}
+#submit{
+    
+    max-width: 7vw;
+}
