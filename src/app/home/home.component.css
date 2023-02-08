@@ -1,0 +1,16 @@
+#header{
+    height: 10vh;
+}
+#footer{
+    height: 10vh;
+}
+#body{
+    height: 80vh;
+}
+#loginDetail{
+    float: right;
+}
+#greet{
+    display: flex;
+    justify-content: center;
+}

@@ -15,8 +15,26 @@
       placeholder="enter your email"
       formControlName="email"
     />
-    <small *ngIf="this.loginForm.get('email').invalid"
+    <small
+      *ngIf="
+        loginForm.get('email').errors?.required &&
+        loginForm.get('email').touched
+      "
       >username is required</small
+    >
+    <small
+      *ngIf="
+        loginForm.get('email').errors?.minlength &&
+        loginForm.get('email').value.length > 0
+      "
+      >username should be minimum 6 characters</small
+    >
+    <small *ngIf="loginForm.get('email').value.length > 15"
+      >username should be maximum 15 characters</small
+    >
+    <small *ngIf="loginForm.get('email').errors?.pattern"
+      >username should contain atleast one lowercase, uppercase character,
+      number and special character</small
     >
     <!-- user password -->
     <input
@@ -25,10 +43,37 @@
       id="password"
       placeholder="enter your password"
     />
-    <small *ngIf="this.loginForm.get('password').invalid"
+    <small
+      *ngIf="
+        loginForm.get('password').errors?.required &&
+        loginForm.get('password').touched
+      "
       >password is required</small
     >
-    <input type="submit" value="login" id="submit" />
+    <small
+      *ngIf="
+        loginForm.get('password').errors?.minlength &&
+        loginForm.get('password').value.length > 0
+      "
+      >password should be minimum 6 characters</small
+    >
+    <small *ngIf="loginForm.get('password').value.length > 15"
+      >password should be maximum 15 characters</small
+    >
+    <small *ngIf="loginForm.get('password').errors?.pattern"
+      >password should contain atleast one lowercase, uppercase character,
+      number and special character</small
+    >
+    <small *ngIf="loginForm.errors?.mismatch"
+      >password and email do not match</small
+    >
+    <input
+      [disabled]="!loginForm.valid"
+      type="submit"
+      value="login"
+      routerLink="/home/:{{ loginForm.get('email').value }}"
+      id="submit"
+    />
   </form>
   <h2>{{ loginForm.value | json }}</h2>
 </section>
