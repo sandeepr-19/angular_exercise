@@ -15,24 +15,14 @@
       placeholder="enter your email"
       formControlName="email"
     />
-    <small
-      *ngIf="
-        loginForm.get('email').errors?.required &&
-        loginForm.get('email').touched
-      "
-      >username is required</small
-    >
-    <small
-      *ngIf="
-        loginForm.get('email').errors?.minlength &&
-        loginForm.get('email').value.length > 0
-      "
+    <small *ngIf="required('email')">username is required</small>
+    <small *ngIf="minlength('email')"
       >username should be minimum 6 characters</small
     >
-    <small *ngIf="loginForm.get('email').value.length > 15"
+    <small *ngIf="maxlength('email')"
       >username should be maximum 15 characters</small
     >
-    <small *ngIf="loginForm.get('email').errors?.pattern"
+    <small *ngIf="pattern('email')"
       >username should contain atleast one lowercase, uppercase character,
       number and special character</small
     >
@@ -43,24 +33,14 @@
       id="password"
       placeholder="enter your password"
     />
-    <small
-      *ngIf="
-        loginForm.get('password').errors?.required &&
-        loginForm.get('password').touched
-      "
-      >password is required</small
-    >
-    <small
-      *ngIf="
-        loginForm.get('password').errors?.minlength &&
-        loginForm.get('password').value.length > 0
-      "
+    <small *ngIf="required('password')">password is required</small>
+    <small *ngIf="minlength('password')"
       >password should be minimum 6 characters</small
     >
-    <small *ngIf="loginForm.get('password').value.length > 15"
+    <small *ngIf="maxlength('password')"
       >password should be maximum 15 characters</small
     >
-    <small *ngIf="loginForm.get('password').errors?.pattern"
+    <small *ngIf="pattern('password')"
       >password should contain atleast one lowercase, uppercase character,
       number and special character</small
     >

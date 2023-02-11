@@ -7,5 +7,10 @@ export function passwordValidation(control:AbstractControl):{[key:string]:boolea
         return null;
         
     }
-    return email&&password&&password.value!=email.value?{'mismatch':true}:null;
+    if(email&&password&&password.value!=email.value){
+        return {'mismatch':true};
+    }
+    else{
+        return null;
+    }
 }

@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-email:any;
+public email:string|null;
 constructor(private route: ActivatedRoute) {
-}
+  this.email = this.route.snapshot.paramMap.get('email');}
 ngOnInit() {
-  this.email = this.route.snapshot.paramMap.get('email');
+  // this.email = this.route.snapshot.paramMap.get('email');
 }
 }
