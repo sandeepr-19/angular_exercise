@@ -1,0 +1,59 @@
+<section id="container">
+  <!-- flex-box container -->
+  <form
+    [formGroup]="loginForm"
+    id="loginCard"
+    action="submit.html"
+    method="get"
+  >
+    <!-- login card form -->
+    <p>login</p>
+    <!-- user email -->
+    <input
+      type="email"
+      id="email"
+      placeholder="enter your email"
+      formControlName="email"
+    />
+    <small *ngIf="required('email')">username is required</small>
+    <small *ngIf="minlength('email')"
+      >username should be minimum 6 characters</small
+    >
+    <small *ngIf="maxlength('email')"
+      >username should be maximum 15 characters</small
+    >
+    <small *ngIf="pattern('email')"
+      >username should contain atleast one lowercase, uppercase character,
+      number and special character</small
+    >
+    <!-- user password -->
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      placeholder="enter your password"
+    />
+    <small *ngIf="required('password')">password is required</small>
+    <small *ngIf="minlength('password')"
+      >password should be minimum 6 characters</small
+    >
+    <small *ngIf="maxlength('password')"
+      >password should be maximum 15 characters</small
+    >
+    <small *ngIf="pattern('password')"
+      >password should contain atleast one lowercase, uppercase character,
+      number and special character</small
+    >
+    <small *ngIf="loginForm.errors?.mismatch"
+      >password and email do not match</small
+    >
+    <input
+      [disabled]="!loginForm.valid"
+      type="submit"
+      value="login"
+      routerLink="/home/:{{ loginForm.get('email').value }}"
+      id="submit"
+    />
+  </form>
+  <h2>{{ loginForm.value | json }}</h2>
+</section>
