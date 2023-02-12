@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { IntractionService } from '../intraction.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +7,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-email:any;
-constructor(private route: ActivatedRoute) {
+email! :string;
+private _interactionService=new IntractionService();
+constructor() {
+  
 }
 ngOnInit() {
-  this.email = this.route.snapshot.paramMap.get('email');
+  this._interactionService.logindetail$.subscribe(
+    details=>{
+     console.log("so");
+     this.email=details;
+    }
+ );
 }
 }
+ 

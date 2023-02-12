@@ -69,11 +69,11 @@
     >
     <input
       [disabled]="!loginForm.valid"
-      type="submit"
+      type="button"
       value="login"
-      routerLink="/home/:{{ loginForm.get('email').value }}"
+      (click)="sendDetails(loginForm.get('email').value)"
       id="submit"
+      routerLink="/home"
     />
   </form>
-  <h2>{{ loginForm.value | json }}</h2>
 </section>

@@ -1,0 +1,12 @@
+<form action="">
+  <input
+    [(ngModel)]="name"
+    type="text"
+    name="name"
+    id="name"
+    placeholder="name"
+  />
+  <input [(ngModel)]="age" type="text" name="age" id="age" placeholder="age" />
+</form>
+<p>{{ childdata }}</p>
+<app-employee (send)="display($event)" [name]="name" [age]="age"></app-employee>
